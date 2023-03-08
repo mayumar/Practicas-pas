@@ -10,6 +10,12 @@ directorio=$1
 extension=$2
 contador=0
 
+if !([ -d $directorio ]);
+then
+    echo "$directorio no es un directorio"
+    exit
+fi
+
 read -t5 -p "Que caracter quieres contar? " respuesta
 
 if [ -z $respuesta ];
