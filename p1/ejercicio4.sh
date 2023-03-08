@@ -23,17 +23,15 @@ cd $directorio
 for fich in $(find . -type f -name "*.$extension")
 do
     name=`basename $fich`
-    for token in $name
-    do
-        if [ $token == $respuesta ];
-        then
-            let contador=$contador+1
-        fi
-    done
-    name="\t$name\t\t${#name}\t\t$contador"
-    echo -e "$name" >> f1
+
+    echo "$name" > nomfich
+    cont=`grep -o $respuesta nomfich | wc -l`
+
+    name="\t$name\t\t${#name}\t\t$cont"
+    echo -e "$name" >> salida
 done
 
 echo -e "\nFicheros: \n"
-nl f1
-rm f1
+nl salida
+rm salida
+rm nomfich
